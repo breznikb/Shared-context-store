@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Brain{% endblock %}</title>
+  <link rel="stylesheet" href="/static/site.css">
+  {% block head %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-dot"></span>Brain</a>
+    <nav>
+      <a href="/" class="{{ 'on' if active == 'brain' }}">Brain</a>
+      <a href="/overview" class="{{ 'on' if active == 'overview' }}">Overview</a>
+      <a href="/projects" class="{{ 'on' if active in ('projects', 'project') }}">Projects</a>
+      <a href="/sessions" class="{{ 'on' if active in ('sessions', 'session') }}">Sessions</a>
+      <a href="/agents" class="{{ 'on' if active == 'agents' }}">Agents</a>
+      <a href="/memory" class="{{ 'on' if active == 'memory' }}">Memory</a>
+      <a href="/audit" class="{{ 'on' if active == 'audit' }}">Audit</a>
+      <a href="/ado" class="{{ 'on' if active == 'ado' }}">ADO <span class="ado-change-badge" hidden title="ADO changed since you last looked">!</span></a>
+    </nav>
+    <span class="spacer"></span>
+    {% block topbar_extra %}{% endblock %}
+  </header>
+  {% block main %}
+  <main class="page">
+    {% block body %}{% endblock %}
+  </main>
+  {% endblock %}
+  <script src="/static/common.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
